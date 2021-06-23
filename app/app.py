@@ -42,7 +42,7 @@ def rectangle(draw, rectangle):
     if('fill' in rectangle):
         draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y']), fill = rectangle['fill'])
     else:
-        draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y'])))
+        draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y']))
 
 def arc(draw, arc):
     draw.arc((arc['from']['x'], arc['from']['y'], arc['to']['x'], arc['to']['y']), arc['start'], arc['end'], fill = arc['fill'])
