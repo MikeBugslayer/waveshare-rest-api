@@ -31,7 +31,7 @@ def clear():
 
 def text(draw, text):
     font20 = ImageFont.truetype(os.path.join(picdir, 'amiga4everpro2.ttf'), text['size'])
-    draw.text((text['x'], text['y']), text['text'], font = font20, fill = 0)
+    draw.text((text['start']['x'], text['start']['y']), text['text'], font = font20, fill = 0)
 
 def line(draw, line):
     draw.line((line['x1'], line['y1'], line['x2'], line['y2']), fill = line['fill'])
@@ -57,7 +57,6 @@ def img(image, img):
     base64_img_bytes = img['img'].encode('utf-8')
     
     newimage = Image.open(io.BytesIO(base64.b64decode(base64_img_bytes)))
-    #newimage = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'test.bmp'))
     image.paste(newimage, (img["posx"],img["posy"]))
 
 
@@ -96,8 +95,6 @@ def json():
         if i['type'] == 'IMG':
             img(image,i)
 
-    #newimage = Image.open(os.path.join(picdir, 'ardbeg.bmp'))
-    #HBlackimage.paste(newimage, (85,30))
     if(content["flip"]):
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
         HRYimage = HRYimage.transpose(Image.ROTATE_180)
