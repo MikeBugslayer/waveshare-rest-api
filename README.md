@@ -9,7 +9,9 @@ app.py mentions amiga4ever font that can be downloaded from here: https://www.da
 
 Please note that the drawing is executed in order for each color and red/yellow is painted over the black in the end.  
 
-Currently there are two endpoints one for drawing at POST /json one for clearing the e-paper at GET /clear
+Currently there are two endpoints 
+- one for drawing at POST /json 
+- one for clearing the e-paper at GET /clear
 
 ## POST /json
 ```json
