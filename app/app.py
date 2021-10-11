@@ -66,7 +66,7 @@ def json():
     logging.basicConfig(level=logging.DEBUG)
     epd = epd2in13b_V3.EPD()
     epd.init()
-    epd.Clear()
+    #epd.Clear()
     HBlackimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126
     HRYimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126  ryimage: red or yellow image
     drawblack = ImageDraw.Draw(HBlackimage)
