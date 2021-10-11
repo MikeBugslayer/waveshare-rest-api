@@ -59,6 +59,9 @@ def img(image, img):
     newimage = Image.open(io.BytesIO(base64.b64decode(base64_img_bytes)))
     image.paste(newimage, (img["pos"]["x"],img["pos"]["y"]))
 
+def pie(draw, pie):
+    draw.pieslice((pie['from']['x'], pie['from']['y'], pie['to']['x'], pie['to']['y']), pie['start'], pie['end'], fill = pie['fill'])
+
 
 
 @app.route('/json', methods=['POST'])
@@ -94,6 +97,8 @@ def json():
             polygon(color, i)
         if i['type'] == 'IMG':
             img(image,i)
+        if i['type'] == 'PIE':
+            pie(image, i)
 
     if(content["flip"]):
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
