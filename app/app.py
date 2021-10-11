@@ -83,6 +83,8 @@ def json():
         if i['color'] == 'BLACK':
             color = drawblack
             image = HBlackimage
+
+        print(i['type'])
         if i['type'] == 'TEXT':
             text(color, i)
         if i['type'] == 'LINE':
