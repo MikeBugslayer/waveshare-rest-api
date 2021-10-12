@@ -97,10 +97,10 @@ def json():
             chord(color, i)
         if i['type'] == 'POLYGON':
             polygon(color, i)
+        if i['type'] == 'PIE':
+            pie(color, i)
         if i['type'] == 'IMG':
             img(image,i)
-        if i['type'] == 'PIE':
-            pie(image, i)
 
     if(content["flip"]):
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
