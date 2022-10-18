@@ -31,24 +31,24 @@ def clear():
 
 def text(draw, text):
     font20 = ImageFont.truetype(os.path.join(picdir, 'amiga4everpro2.ttf'), text['size'])
-    draw.text((text['x'], text['y']), text['text'], font = font20, fill = 0)
+    draw.text((text['pos']['x'], text['pos']['y']), text['text'], font = font20, fill = 0)
 
 def line(draw, line):
-    draw.line((line['x1'], line['y1'], line['x2'], line['y2']), fill = line['fill'])
+    draw.line((line['from']['x'], line['from']['y'], line['to']['x'], line['to']['y']), fill = line['fill'])
 
 def rectangle(draw, rectangle):
     if('outline' in rectangle):
-        draw.rectangle((rectangle['x1'], rectangle['y1'], rectangle['x2'], rectangle['y2']), outline = rectangle['outline'])
+        draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y']), outline = rectangle['outline'])
     if('fill' in rectangle):
-        draw.rectangle((rectangle['x1'], rectangle['y1'], rectangle['x2'], rectangle['y2']), fill = rectangle['fill'])
+        draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y']), fill = rectangle['fill'])
     else:
-        draw.rectangle((rectangle['x1'], rectangle['y1'], rectangle['x2'], rectangle['y2']))
+        draw.rectangle((rectangle['from']['x'], rectangle['from']['y'], rectangle['to']['x'], rectangle['to']['y']))
 
 def arc(draw, arc):
-    draw.arc((arc['x1'], arc['y1'], arc['x2'], arc['y2']), arc['start'], arc['end'], fill = arc['fill'])
+    draw.arc((arc['from']['x'], arc['from']['y'], arc['to']['x'], arc['to']['y']), arc['start'], arc['end'], fill = arc['fill'])
 
 def chord(draw, chord):
-    draw.chord((chord['x1'], chord['y1'], chord['x2'], chord['y2']), chord['start'], chord['end'], fill = chord['fill'])
+    draw.chord((chord['from']['x'], chord['from']['y'], chord['to']['x'], chord['to']['y']), chord['start'], chord['end'], fill = chord['fill'])
 
 def polygon(draw, polygon):
     draw.polygon(polygon['points'], polygon['fill'])
@@ -57,8 +57,10 @@ def img(image, img):
     base64_img_bytes = img['img'].encode('utf-8')
     
     newimage = Image.open(io.BytesIO(base64.b64decode(base64_img_bytes)))
-    #newimage = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'test.bmp'))
-    image.paste(newimage, (img["posx"],img["posy"]))
+    image.paste(newimage, (img["pos"]["x"],img["pos"]["y"]))
+
+def pie(draw, pie):
+    draw.pieslice((pie['from']['x'], pie['from']['y'], pie['to']['x'], pie['to']['y']), pie['start'], pie['end'], fill = pie['fill'])
 
 
 
@@ -67,7 +69,7 @@ def json():
     logging.basicConfig(level=logging.DEBUG)
     epd = epd2in13b_V3.EPD()
     epd.init()
-    epd.Clear()
+    #epd.Clear()
     HBlackimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126
     HRYimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126  ryimage: red or yellow image
     drawblack = ImageDraw.Draw(HBlackimage)
@@ -81,6 +83,8 @@ def json():
         if i['color'] == 'BLACK':
             color = drawblack
             image = HBlackimage
+
+        print(i['type'])
         if i['type'] == 'TEXT':
             text(color, i)
         if i['type'] == 'LINE':
@@ -93,11 +97,11 @@ def json():
             chord(color, i)
         if i['type'] == 'POLYGON':
             polygon(color, i)
+        if i['type'] == 'PIE':
+            pie(color, i)
         if i['type'] == 'IMG':
             img(image,i)
 
-    #newimage = Image.open(os.path.join(picdir, 'ardbeg.bmp'))
-    #HBlackimage.paste(newimage, (85,30))
     if(content["flip"]):
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
         HRYimage = HRYimage.transpose(Image.ROTATE_180)
