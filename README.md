@@ -21,26 +21,22 @@ Currently there are two endpoints
 {
     "type": "IMG",
     "color": "BLACK",
-    "x": 104,
-    "y": 104,
-    "posx":54,
-    "posy":0,
+    "pos":{"x":54,
+    "y":0},
     "img":"Qk2+BgAAAAAAAD4AAAAoAAAAZAAAAGgAAAABAAEAAAAAAIAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD////////////////wAAAA////////////////8AAAAIAAAAAAf/////////AAAACAAAAAAH/////////wAAAAn///P/x/////////8AAAAJ///z/8f/////////AAAACf//8//H/////////wAAAAn///P/x/////////8AAAAJ///z/8f/////////AAAACf//8//H/////////wAAAAn///P/x/////////8AAAAJ///z/8H/////////AAAACf//8//w/////////wAAAAn///P//B////////8AAAAJ///z//8P////////AAAACf//8///z////////wAAAAn///P//8////////8AAAAJ///z///n////////AAAACf//8B//4////////wAAAAn///AH//H///////8AAAAJ////w//5////////AAAACf////P/+H///////wAAAAn////5/8E///////8AAAAJ////+f/An///////AAAACf////n/AA///////wAAAAH////5/gwH/h/wBwcAAAAB////+f4fB/4f8AcHAAAAA/////kAHiP+D/AAAwAAAAP////4AABj/gf4+AMAAAAD////+AgB8/4H+P+HAAAAA/////p4D/n+A/j/hwAAAAP////6+Af4/hDw+AMAAAAD////+vgD+P4QcPgDAAAAA/////hzwfz+EDj/BwAAAAP////4B+D8//////8AAAAD////+QfgfP//////AAAAA/////gAAAAAAAAAAAAAAAP////wAAAAAAAAAAAAAAAD////8AAAAAAAAAAAAAAAA/////P5+DBDD7/4+AAAAAP////z+PgQQQ+f+PgAAAAD////8/j5iOAPj/j4AAAAA/////P4MIBgB4f4+AAAAAP////z+BDEMAOD+PgAAAAD5///8/gIhjERgfj4AAAAA+P///PwxAgAAAh4+AAAAAPg///z8MQYAIAIePgAAAAD8H//8/////////j4AAAAAfw///H//8f/5z/4+AAAAAj+D//4f/zMiCc/+PgAAAAIf4f//j/8SAAEP/j4AAAADH/B//8f/AkTAD/4+AAAAA4/gD//x/xHAAI/+PgAAAAPHwAf/8f8xwgnP/j4AAAADwYIB//h///////4+AAAAA/GPAP/8P//////+PgAAAAP4PwA//h8P///4/j4AAAAD/H8IH/+YGDAhwf4+AAAAA/5/Dg//mREiBJH+PgAAAAP+Pw4BAJkRIgCR/j4AAAAD/j8PwACZACIggf4+AAAAA/8/D8B8mQgiIcP+PgAAAAP/nw/A/J///////j4AAAAD/48Pwfyf//////4+AAAAA/+PD8D8n//////+PgAAAAP/gw/E/J///////j4AAAAD/+APwPgAAAAAAAAeAAAAA//4D4DAAAAAAAAAPgAAAAP//A/+AH////////4AAAAD//8P/gD////////+AAAAA///D////////////gAAAAP//w////////////4AAAAD//8P///////////+AAAAA///D////////////gAAAAP//w////////////4AAAAD//8P///////////+AAAAA///D////////////gAAAAP//w////////////4AAAAD//8P///////////+AAAAA///D////////////gAAAAP//w////////////4AAAAD//8P///////////+AAAAA///D////////////gAAAAP//w////////////4AAAAD//8P/+AAAAAAAf/+AAAAA///D//wAAAAAAH//gAAAAP//w//8f/////x//4AAAAD//8P//H/////8f/+AAAAA///D//h////gBH//gAAAAP//w//4f///4AR//4AAAAD//8P/+H///+PEf/+AAAAA///D//h////jxH//gAAAAP//w//4f///48R//4AAAAD//8P/+H///+PEf/8AAAAA///D//x////jxH//EAAAAP//w//8f///48R//BAAAAD//8P//H///+PEf/hwAAAA///D//x////jxH/48AAAAP//w//8f///4AR/4PAAAAD//8P//H///+AEf8PwAAAA///D//h//////D/D8AAAAP//wAAAAAAAAAAAB/AAAAD//8AAAAAAAAAAAA/wAAAA////////////////8AAAAA=="
 },
 {
     "type": "IMG",
     "color": "RED",
-    "x": 104,
-    "y": 104,
-    "posx":54,
-    "posy":0,
+    "pos": {"x":54,
+    "y":0},
     "img":"Qk2+BgAAAAAAAD4AAAAoAAAAZAAAAGgAAAABAAEAAAAAAIAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD//////5+DBDD7///wAAAA//////+PgQQQ+f//8AAAAP//////j5iOAPj///AAAAD//////4MIBgB4f//wAAAA//////+BDEMAOD//8AAAAP//////gIhjERgf//AAAAD//////wxAgAAAh//wAAAA//////8MQYAIAIf/8AAAAP////////////////AAAAD////////8f/5z///wAAAA////////zMiCc///8AAAAP///////8SAAEP///AAAAD////////AkTAD///wAAAA////////xHAAI///8AAAAP///////8xwgnP///AAAAD////////////////wAAAA////////////////8AAAAP///////8P///4///AAAAD///////4GDAhwf//wAAAA///////+REiBJH//8AAAAP///////kRIgCR///AAAAD///////5ACIggf//wAAAA///////+QgiIcP//8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAP////////////////AAAAD////////////////wAAAA////////////////8AAAAA=="
 },
 {
     "type": "TEXT",
     "color": "BLACK",
-    "x": 0,
-    "y": 0,
+    "pos": {"x": 0,
+        "y": 0},
     "size": 8,
     "text": "Hello"
 
@@ -48,28 +44,31 @@ Currently there are two endpoints
 {
     "type":"LINE",
     "color":"RED",
-    "x1":0,
-    "y1":10,
-    "x2":20,
-    "y2":20,
+    "from": {
+        "x":0,
+        "y":10},
+    "to": {
+        "x":20,
+        "y":20},
     "fill":0
 },
 {
     "type":"RECTANGLE",
     "color":"BLACK",
-    "x1":10,
-    "y1":30,
-    "x2":50,
-    "y2":40,
+    "from": 
+        {"x":10,
+        "y":30},
+    "to": {"x":50,
+        "y":40},
     "outline":0
 },
 {
     "type":"ARC",
     "color":"RED",
-    "x1":10,
-    "y1":50,
-    "x2":50,
-    "y2":90,
+    "from": {"x":10,
+    "y":50},
+    "to": {"x":50,
+    "y":90},
     "start":0,
     "end":360,
     "fill":0
@@ -77,10 +76,10 @@ Currently there are two endpoints
 {
     "type":"CHORD",
     "color":"BLACK",
-    "x1":160,
-    "y1":10,
-    "x2":180,
-    "y2":30,
+    "from": {"x":160,
+    "y":10},
+    "to": {"x"":180,
+    "y":30},
     "start":0,
     "end":180,
     "fill":0
