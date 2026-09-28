@@ -78,7 +78,7 @@ Currently there are two endpoints
     "color":"BLACK",
     "from": {"x":160,
     "y":10},
-    "to": {"x"":180,
+    "to": {"x":180,
     "y":30},
     "start":0,
     "end":180,
