@@ -79,7 +79,7 @@ def json():
             color = drawblack
             image = HBlackimage
 
-        print(i['type'])
+        logging.debug('operation: %s', i['type'])
         if i['type'] == 'TEXT':
             text(color, i)
         if i['type'] == 'LINE':
