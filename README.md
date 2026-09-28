@@ -13,7 +13,12 @@ Currently there are two endpoints
 - one for drawing at POST /json 
 - one for clearing the e-paper at GET /clear
 
+POST /json does not clear the panel before drawing. If you see leftovers of the previous image, call GET /clear first.
+
 ## POST /json
+
+`flip` is optional (default `false`) and rotates the image by 180°. The request is checked before the panel is touched: an unknown operation type, a missing field or a malformed `pos`/`from`/`to` returns `400` with a message saying which operation is wrong, and nothing is drawn.
+
 ```json
 {
     "flip":true,
@@ -85,6 +90,17 @@ Currently there are two endpoints
     "fill":0
 },
 {
+    "type":"PIE",
+    "color":"RED",
+    "from": {"x":200,
+    "y":10},
+    "to": {"x":230,
+    "y":40},
+    "start":0,
+    "end":90,
+    "fill":0
+},
+{
     "type":"POLYGON",
     "color":"RED",
     "points":[160,30,190,40,165,45],
@@ -93,3 +109,28 @@ Currently there are two endpoints
 ]}
 ```
 
+
+### Operations
+
+Every operation needs `type` and `color` (`BLACK`, or anything else for red/yellow). `from`/`to` are the corners of the bounding box, `start`/`end` are angles in degrees.
+
+| type | fields |
+|------|--------|
+| `TEXT` | `pos`, `size`, `text` |
+| `LINE` | `from`, `to`, `fill` |
+| `RECTANGLE` | `from`, `to`, optional `outline`, optional `fill` |
+| `ARC` | `from`, `to`, `start`, `end`, `fill` |
+| `CHORD` | `from`, `to`, `start`, `end`, `fill` |
+| `PIE` | `from`, `to`, `start`, `end`, `fill` |
+| `POLYGON` | `points` (flat list `[x1, y1, x2, y2, ...]`), `fill` |
+| `IMG` | `pos`, `img` (base64-encoded bitmap) |
+
+### Coordinate format change
+
+Coordinates used to be flat keys and are now nested `{"x": ..., "y": ...}` objects. Requests in the old format are rejected, so update existing clients:
+
+| old | new |
+|-----|-----|
+| `x`, `y` (TEXT) | `pos` |
+| `posx`, `posy` (IMG) | `pos` |
+| `x1`, `y1`, `x2`, `y2` | `from`, `to` |

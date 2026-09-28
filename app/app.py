@@ -57,20 +57,48 @@ def img(image, img):
 def pie(draw, pie):
     draw.pieslice((pie['from']['x'], pie['from']['y'], pie['to']['x'], pie['to']['y']), pie['start'], pie['end'], fill = pie['fill'])
 
+REQUIRED_FIELDS = {
+    'TEXT': ['pos', 'size', 'text'],
+    'LINE': ['from', 'to', 'fill'],
+    'RECTANGLE': ['from', 'to'],
+    'ARC': ['from', 'to', 'start', 'end', 'fill'],
+    'CHORD': ['from', 'to', 'start', 'end', 'fill'],
+    'PIE': ['from', 'to', 'start', 'end', 'fill'],
+    'POLYGON': ['points', 'fill'],
+    'IMG': ['pos', 'img'],
+}
+
+def validate(content):
+    if not isinstance(content, dict) or not isinstance(content.get('operations'), list):
+        return 'body must be a JSON object with an "operations" list'
+    for n, op in enumerate(content['operations']):
+        if not isinstance(op, dict):
+            return 'operation %d must be an object' % n
+        if op.get('type') not in REQUIRED_FIELDS:
+            return 'operation %d: unknown type %r' % (n, op.get('type'))
+        missing = [f for f in ['color'] + REQUIRED_FIELDS[op['type']] if f not in op]
+        if missing:
+            return 'operation %d (%s): missing %s' % (n, op['type'], ', '.join(missing))
+        for f in ('pos', 'from', 'to'):
+            if f in op and not (isinstance(op[f], dict) and 'x' in op[f] and 'y' in op[f]):
+                return 'operation %d (%s): %s must be {"x": ..., "y": ...}' % (n, op['type'], f)
+    return None
 
 
 @app.route('/json', methods=['POST'])
 def json():
     logging.basicConfig(level=logging.DEBUG)
+    content = request.get_json(silent=True)
+    error = validate(content)
+    if error:
+        return error, 400
+
     epd = epd2in13b_V3.EPD()
     epd.init()
-    #epd.Clear()
     HBlackimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126
     HRYimage = Image.new('1', (epd.height, epd.width), 255)  # 298*126  ryimage: red or yellow image
     drawblack = ImageDraw.Draw(HBlackimage)
     drawry = ImageDraw.Draw(HRYimage)
-
-    content = request.json
 
     for i in content["operations"]:
         color = drawry
@@ -97,7 +125,7 @@ def json():
         if i['type'] == 'IMG':
             img(image,i)
 
-    if(content["flip"]):
+    if(content.get("flip", False)):
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
         HRYimage = HRYimage.transpose(Image.ROTATE_180)
     epd.display(epd.getbuffer(HBlackimage), epd.getbuffer(HRYimage))
