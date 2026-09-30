@@ -15,6 +15,8 @@ Currently there are two endpoints
 
 POST /json does not clear the panel before drawing. If you see leftovers of the previous image, call GET /clear first.
 
+Both endpoints put the panel into deep sleep once it has refreshed (as Waveshare recommends, since leaving it powered can damage it), so a request returns about 2 s after the refresh ends. The next request wakes the panel again.
+
 ## POST /json
 
 `flip` is optional (default `false`) and rotates the image by 180°. The request is checked before the panel is touched: an unknown operation type, a missing field or a malformed `pos`/`from`/`to` returns `400` with a message saying which operation is wrong, and nothing is drawn.

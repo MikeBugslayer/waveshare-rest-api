@@ -27,6 +27,7 @@ def clear():
     epd = epd2in13b_V3.EPD()
     epd.init()
     epd.Clear()
+    epd.sleep()
     return ''
 
 def text(draw, text):
@@ -129,4 +130,7 @@ def json():
         HBlackimage = HBlackimage.transpose(Image.ROTATE_180)
         HRYimage = HRYimage.transpose(Image.ROTATE_180)
     epd.display(epd.getbuffer(HBlackimage), epd.getbuffer(HRYimage))
+    # Deep sleep between draws: Waveshare warns that leaving the panel powered
+    # can damage it. The next request's epd.init() wakes it again.
+    epd.sleep()
     return 'OK'
