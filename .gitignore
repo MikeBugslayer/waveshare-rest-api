@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Fonts downloaded separately (see README), kept out of git so `git clean` leaves them alone
+pic/
